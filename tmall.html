@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天猫tmall--理想生活上天猫</title>
+    <link rel="icon" href="suoyin.ico" type="image/x-icon"  >
+</head>
+<style>
+    .top{ width:100%; height:30px;  margin:0 auto;
+        background: rgba(231, 224, 224, 0.38); /*margin:0 auto;*/
+        top:0;position:absolute;}          /*为什么设置成relative顶上会留有空白*/
+    .top ul{width:100%; margin:0 auto; height:30px; padding:0;}
+    .top ul li {float:left; list-style-type:none; position: relative; margin-right: 14px;      /* ul内的字间距 */
+    }
+
+    .top ul li a{margin:5px ;font-size:12px;display:block; color: #b09c9b;text-align:center;text-decoration:none;}
+    .top li a:hover{color:red;}  /* 鼠标选中时变为红色 */
+    .top ul li ul {
+        margin-left: -0.2px;
+        background: rgb(189, 181, 181);
+        position: relative;
+        display: none; /* 默认隐藏二级菜单的内容 */
+        /* 设置二级菜单 */  }
+    .top ul li ul li{
+        /* 二级菜单li内容的显示 */
+        float:none;
+        text-align: center;}
+    .top ul li:hover ul{
+        /* 鼠标选中二级菜单内容时 */
+        display: block;  }
+    .top ul li[t="111"]{
+        margin-left: 150px;margin-top:5px;font-size:12px;display:block; color: #b09c9b;text-align:center;text-decoration:none;
+    }
+    .top ul li[t="222"]{
+        margin-left: 400px;
+    }
+    .top ul li[t="333"]{
+        background-image :url("shoppingcar.ico");
+        background-position:left,center;
+        background-repeat:no-repeat;
+        margin-left: 15px;
+        text-indent:0.8em;/*规定文本块中首行文本的缩进*/
+    }
+    .top ul li[t="444"]{
+        background-image :url("Phone.ico");
+        background-position:left,center;
+        background-repeat:no-repeat;
+        margin-left: 15px;
+        text-indent:0.8em;
+    }
+    .top ul li[t="555"]{
+        background-image :url("menu.ico");
+        background-position:left,center;
+        background-repeat:no-repeat;
+        margin-left: 15px;
+        text-indent:0.8em;
+    }
+    img{float: left;margin-left: 120px;
+        margin-top: 20px;}
+    .ri{
+        width: 35px; height:100%;  margin:0 auto;
+        background: rgb(6, 1, 0); /*margin:0 auto;*/
+        top:0;right:0;bottom: 0;position:fixed;
+    }/*display: table;*/
+    .ri ul{  list-style-type: none;  width: 35px; height:100%;  margin:0 auto;padding:0;   }
+    .ri ul li{ float:top; position: relative; }/*display: table-cell;vertical-align:middle;*/
+    .ri ul li a{  display:block;text-align: center;vertical-align:middle;text-decoration:none;font-size: 12px;color: ghostwhite;}
+    .ri ul li[t="ri-1"]{  margin-top: 400px;padding-bottom: 80px;position:relative;  }           /*图片无法显示出来？？？？？？？？？？？？？*/
+    #box{
+        width: 600px;
+        height:50px; /* ???? */
+        margin-top: 60px;
+        margin-left:500px ;
+        font-size: 14px;
+        position: absolute;
+        /*  background-color: #111111;   ?????*/
+    }
+    #box input{
+        width: 477px;
+        border: 1.5px solid #ff0a00;
+        height: 38px;
+        float: left;
+        padding:  0;
+    }
+    #search{
+        width: 120px;
+        height: 41px;
+        float: right;
+        background: #ff0a00;
+        color: white;
+        font-weight:bold;
+        font-size: 18px;
+        text-align: center;  line-height: 41px;
+        cursor: pointer;
+        padding: 0;
+    }
+    #box2{
+        width: 650px;
+        height: 30px;
+        margin-top: 92px;
+        margin-left:460px ;
+        font-size: 14px;
+        position: absolute;
+    }
+    #box2 ul{
+        list-style-type: none;
+        width: auto;
+    }
+    #box2 ul li{
+        float:left;
+        width: 50px;;
+        height: auto;
+        margin-right: 8px;
+        color: #b09c9b ;
+        border-right: 1px solid #b09c9b;
+        line-height:16px;
+        text-align:center;
+        cursor:pointer;
+    }
+    #box2 ul li:last-child{
+         border-right: none;
+    }
+    #box3{
+        width:100%;
+        height: 35px;
+        margin-top: 151px;
+        margin-left:165px ;
+        position: absolute;
+    }
+    #box3 ul li {
+        float: left;
+        list-style-type:none;
+        margin-right: 0;
+        position: relative;
+    }
+    #box3 ul li a{
+        display:block;
+        text-align:center;line-height:35px;
+        text-decoration:none;
+        margin-top: -15px;
+        margin-right: 12px;
+        color: #111111;
+    }
+    #box3 ul li[t="2-1"]{
+        width: 200px;
+        background: #ff0a00;
+        color: white;
+        font-weight:bold;
+        font-size: 15px;
+        text-align:center; line-height:35px;
+        cursor: pointer;
+        padding: 0;
+        margin-top: -16px;
+        margin-left:-40px;
+    }
+    #box3 ul li[t="3-2"]{
+        margin-top: -32px;
+        margin-left:-120px ;
+        cursor: pointer;
+    }
+    #box3 ul li[t="3-3"]{
+        margin-top: -32px;
+        margin-left:-120px;cursor: pointer;
+    }
+    #box4{
+        width:100%;
+        height: 480px;
+        margin-left: 165px;
+        margin-top: 185px;
+        position: absolute;
+    }
+    #box4 ul li {
+        display:block;  /*改为块元素*/
+        text-decoration:none;
+        width:200px; height:30px;
+        text-align:center; line-height:30px;
+        background: rgba(93, 89, 96, 0.29);
+        font-size:14px;
+        overflow:hidden;
+        margin-left: -41px;
+    }
+    #box4 ul li:first-child{ margin-top: -15px; }
+    #box4 ul li a{font-size:15px;display:block;color: #fff8f9;text-decoration:none;}
+    #box4 ul li ul {display: none;margin-left: 200px;margin-top: -14px;position:absolute;}/*鼠标不在a上时*/
+    #box4 ul li:hover ul li { border:0;height: 60px; line-height:60px;font-weight:bold;font-size:14px; }/*鼠标放在一级标题上时，二级标题中动作，长宽*/
+    #box4 ul li:hover a { background: #fff8f9;color: #0e0a0a;}/*鼠标放在一级标题时，单元格字体与背景颜色*/
+    #box4 ul li:hover ul {display:block; width: 15px; top:30px; left:0; background: #fff8f9; color: #0e0a0a;}/*鼠标在a上时*/ /*top:30px;用来固定二级标题的起始列都保持一致*/  /*？？？？？？？*/
+    #box4 ul li:hover ul li ul {display: block;border:0;height: 60px;background: #fff8f9;color: #0e0a0a;font-size:14px; position:absolute; left:0;width: 400px;float: right; }/*三级标题常开，属性*/
+    #img2 {  margin-left: 340px;margin-top: 660px;position:absolute;}/*text-align:center;line-height:40px;*/
+    .h5 {
+        margin-top: 740px;
+        margin-left: 165px;
+        position:absolute;
+        width: 100%;
+        height: 300px;
+    }
+    .h5 ul{
+        list-style-type:none;
+    }
+    .h5 ul li:first-child{
+        margin-left: -160px;
+        margin-top: -37px;
+
+    }
+     .h5 img{
+        margin-right: -110px;
+    }
+    .h5 ul li a:hover{ opacity:0.7;}/*鼠标移上时变亮*/
+    .h6{ width: 100%; height: 50px; margin-top:1050px;  margin-left: 165px; position:absolute; }
+    .h6 ul{  list-style-type:none;  }
+    .h6 ul li{float:left;text-indent:0.8em; }
+
+    .h7{
+        width:100%;
+        height: 50px;
+        position: absolute;
+        margin-top: 1100px;margin-left: 165px;
+    }
+    .h7 ul{ list-style-type:none;  }
+    .h7 ul li {float:left;margin-left: -160px;margin-top: -36px;  }
+    .h7 ul li a:hover{ opacity:0.7;}
+   /* .h7 img{margin-right: 50px;}*/
+
+</style>
+<body>
+<div class="top">
+    <ul>
+        <li t="111" >喵，欢迎来天猫</li>
+        <li><a href="#"  target="_blank">请登录</a></li>  <!--target="_blank"新窗口打开-->
+        <li><a href="#"  target="_blank">免费注册</a></li>
+
+        <li t="222"><a href="#"  target="_blank">我的淘宝</a>
+            <ul>
+                <li><a href="#">已买到的宝贝</a></li>
+                <li><a href="#">已卖出的宝贝</a></li>
+            </ul>
+        </li>
+
+        <li t="333"><a href="#"  target="_blank">购物车0件</a></li>
+        <li><a href="#"  target="_blank">收藏夹</a>
+            <ul>
+                <li><a href="#">收藏的宝贝</a></li>
+                <li><a href="#">收藏的店铺</a></li>
+            </ul>
+        </li>
+        <li t="444"><a href="#"  target="_blank">手机版</a></li>
+        <li><a href="#" target="_blank">淘宝网</a></li>
+        <li><a href="#"  target="_blank">商家支持</a></li>
+        <li t="555"><a href="#" target="_blank">网页导航</a></li>
+    </ul>
+</div>
+<img src="2.1.gif">
+<div id="box">
+    <input type="text"title="请输入搜索文字" name="search" placeholder="搜索 天猫 商品/品牌/店铺">
+    <div id="search" >搜索</div>
+</div>
+<div id="box2">
+    <ul>
+        <li>四件套</li>
+        <li>运动鞋</li>
+        <li>连衣裙</li>
+        <li>口红</li>
+        <li>牛奶</li>
+        <li>洗发露</li>
+        <li>摄像头</li>
+        <li>针织衫</li>
+        <li>仿真花</li>
+     </ul>
+</div>
+<div id="box3">
+    <ul>
+        <li t="2-1">商品分类</li>
+        <li t="3-2"><img src="3-2.png" width="120" height="30"/></li><!--没有添加链接标签-->
+        <li t="3-3"><img src="3-3.png" width="120" height="30"/></li><!--没有添加链接标签-->
+        <li><a href="#">天猫会员</a></li>
+        <li><a href="#">电器城</a></li>
+        <li><a href="#">喵鲜生</a></li>
+        <li><a href="#">医药馆</a></li>
+        <li><a href="#">营业厅</a></li>
+        <li><a href="#">魅力惠</a></li>
+        <li><a href="#">飞猪旅行</a></li>
+        <li><a href="#">苏宁易购</a></li>
+    </ul>
+</div>
+<div id="box4">
+        <ul>
+            <li><a href="#">女装/内衣</a>
+                 <ul>
+                     <li><a href="#">当季流行</a>
+                         <ul>
+                             <li><a href="#">女装新品</a></li>
+                             <li><a href="#">商场同款</a></li>
+                             <li><a href="#">仙女连衣裙</a></li>
+                             <li><a href="#">T恤</a></li>
+                             <li><a href="#">衬衫</a></li>
+                             <li><a href="#">时髦外套</a></li>
+                             <li><a href="#">休闲裤</a></li>
+                             <li><a href="#">牛仔裤</a></li>
+                             <li><a href="#">无痕文胸</a></li>
+                             <li><a href="#">运动文胸</a></li>
+                             <li><a href="#">潮流家居服</a></li>
+                             <li><a href="#">百搭船袜</a></li>
+                         </ul>
+                     </li>
+                     <li><a href="#">精选上装</a></li>
+                     <li><a href="#">浪漫裙装</a></li>
+                     <li><a href="#">女士下装</a></li>
+                     <li><a href="#">特色女装</a></li>
+                     <li><a href="#">家居服</a></li>
+                     <li><a href="#">内衣背心</a></li>
+                     <li><a href="#">女士新品</a></li>
+                 </ul>
+            </li>
+            <li><a href="#">男装/户外运动</a>
+                <ul>
+                    <li><a href="#">当季流行</a></li>
+                    <li><a href="#">精选上装</a></li>
+                    <li><a href="#">浪漫裙装</a></li>
+                    <li><a href="#">男士下装</a></li>
+                    <li><a href="#">家居服</a></li>
+                    <li><a href="#">内衣背心</a></li>
+                    <li><a href="#">男士新品</a></li>
+                </ul>
+            </li>
+            <li><a href="#">女鞋/男鞋</a></li><li><a href="#">美妆/个人护理</a></li><li><a href="#">腕表/眼镜/珠宝首饰</a></li><li><a href="#">手机/数码/电脑办公</a></li><li><a href="#">母婴玩具</a></li><li><a href="#">零食/茶酒/进口茶品</a></li><li><a href="#">生鲜水果</a></li><li><a href="#">大家电/生活电器</a></li><li><a href="#">家居建材</a></li><li><a href="#">汽车/配件/用品</a></li><li><a href="#">家纺/家饰/鲜花</a></li><li><a href="#">医药保健</a></li><li><a href="#">厨具/收纳/宠物</a></li><li><a href="#">图书/音像</a></li>
+        </ul>
+</div>
+<div id="img2" >
+         <img src="4-1.png" >
+</div>
+<div class="h5" >
+    <ul>
+        <li><a href="#"><img src="5-1.jpg" width="230" height="280"></a></li>
+        <li><a href="#"><img src="5-2.jpg_.webp" width="230" height="280"/></a></li>
+        <li><a href="#"><img src="5-3.jpg_.webp" width="230" height="280"/></a></li>
+        <li><a href="#"><img src="5-4.jpg_.webp" width="230" height="280"/></a></li>
+        <li><a href="#"><img src="5-5.jpg_.webp" width="230" height="280"/></a></li>
+    </ul>
+    </div>
+<div class="h6">
+    <ul>
+        <li ><a href="#" style="width:230px;display:block;height:50px;text-decoration:none;text-align:left; line-height:50px;border-right:10px solid #fff8f9; background: rgb(240, 234, 235); margin-top: -15px; margin-left:-40px;color: #0e0a0a;" ><strong>品牌闪购</strong> BRAND&#32SALE</a></li>
+        <li ><a href="#" style="width:470px;display:block;height:50px;text-decoration:none;text-align:left; line-height:50px;border-right:10px solid #fff8f9; background: rgb(240, 234, 235); margin-top: -15px; color: #0e0a0a;" ><strong>聚名品</strong> LUXURY CHANNEL</a></li>
+        <li ><a href="#" style="width:470px;display:block;height:50px;text-decoration:none;text-align:left; line-height:50px;background: rgb(240, 234, 235); margin-top: -15px; color: #0e0a0a;"><strong>品牌活动</strong> BRAND ACTIVITY</a></li>
+    </ul>
+</div>
+<div class="ri">
+    <ul>
+        <li><img src="ri-vip.ico" width="300" height="450"/></li>
+        <li><a href="#" >购<br>物<br>车</a></li>
+    </ul>
+</div>
+<div class="h7">
+    <ul>
+        <li><a href="#" style="margin-right: 50px;" ><img src="6-1.jpg_.webp" width="230" height="300"></a></li>
+        <li><a href="#" style="margin-right: 50px;"><img src="6-2.jpg_.webp" width="470" height="300"></a></li>
+        <li><a href="#" ><img src="6-3.jpg_.webp" width="470" height="300"></a></li>
+    </ul>
+</div>
+</body>
+</html>
